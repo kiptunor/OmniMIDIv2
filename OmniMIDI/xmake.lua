@@ -5,11 +5,18 @@ set_allowedplats("mingw", "linux", "bsd")
 set_allowedmodes("debug", "release")
 set_allowedarchs("i386", "x86_64", "arm64")
 	
-add_rules("mode.release", "mode.debug")
+add_rules("mode.release", "mode.debug", "plugin.compile_commands.autoupdate")
 set_languages("clatest", "cxx2a", "c++20")
 set_runtimes("stdc++_static")
 
-add_requires("nlohmann_json", "miniaudio")
+add_requires("nlohmann_json")
+
+add_requires("miniaudio", {
+    system = false,
+    configs = {
+        headeronly = true
+    }
+})
 
 option("nonfree")
     set_default(false)

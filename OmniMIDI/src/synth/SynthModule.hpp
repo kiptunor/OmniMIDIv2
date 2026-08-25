@@ -276,7 +276,7 @@ enum SynthResult {
 
 class Synthesizers {
   public:
-    enum engineID { External = -1, BASSMIDI, FluidSynth, XSynth, ShakraPipe };
+    enum engineID { External = -1, BASSMIDI, FluidSynth, XSynth, Kasaria, ShakraPipe };
 };
 
 class SoundFont {

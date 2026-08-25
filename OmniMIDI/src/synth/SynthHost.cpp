@@ -22,6 +22,8 @@
 #include "fluidsynth/FluidSynth.hpp"
 #include "plugin/PluginSynth.hpp"
 #include "xsynth/XSynthM.hpp"
+#include "kasaria/kasariaM.hpp"
+
 #include <chrono>
 
 #ifdef _WIN32
@@ -360,6 +362,11 @@ OmniMIDI::SynthModule *OmniMIDI::SynthHost::GetSynth() {
 #else
         Error("XSynth is not available on this platform.");
 #endif
+        break;
+
+    case Synthesizers::Kasaria:
+        newSynth = new OmniMIDI::KasariaSynth(ErrLog);
+        Message("Syn%d (KASARIA)", r);
         break;
 
 #if defined(WIN32)
