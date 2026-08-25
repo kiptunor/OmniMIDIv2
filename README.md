@@ -27,6 +27,7 @@ Here's what available with OmniMIDI v2 so far.
       - ✔️ [BASSMIDI*](https://www.un4seen.com/bass.html) *(Requires extra config in xmake)*
       - ✔️ [FluidSynth](https://github.com/FluidSynth/fluidsynth)
       - ✔️ [XSynth](https://github.com/arduano/xsynth)
+      - ⚠️ [Kasaria](https://github.com/kiptunor/kasaria) (Experimental)
       - ✔️ External plugin system
    - 🔽 Features
       - ✔️ Audio limiter (anti-clipping)
