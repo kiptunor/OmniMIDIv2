@@ -101,13 +101,13 @@ bool OmniMIDI::KasariaSynth::StartSynthModule()
         return true;
 
 
-    if (!KsrConfig)
+    if(!KsrConfig)
         return false;
 
     
 
-    // Initialize the Kasaria synth context without disabling logs
-    ksr_synth_ctx = ksr_init(0);
+    // Initialize the Kasaria synth context
+    ksr_synth_ctx = ksr_init(KsrConfig->disableSynthLogs);
 
     // Configure the synth with the following settings
     KasariaConfig ksr_settings =
@@ -159,7 +159,13 @@ void OmniMIDI::KasariaSynth::PlayShortEvent(unsigned int ev)
     UPlayShortEvent(ev);
 }
 
-bool OmniMIDI::KasariaSynth::StopSynthModule() {
+uint64_t OmniMIDI::KasariaSynth::GetActiveVoices()
+{
+    return ksr_get_active_voices(ksr_synth_ctx);
+}
+
+bool OmniMIDI::KasariaSynth::StopSynthModule()
+{
     _sfSystem.RegisterCallback();
 
     if(IsSynthInitialized())

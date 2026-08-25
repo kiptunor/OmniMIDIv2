@@ -17,6 +17,7 @@ namespace OmniMIDI
     {
     public:
         // Settings for Kasaria synth
+        bool    disableSynthLogs      = false;
         bool    audioLimiter          = true;
         bool    fastDecay             = true;
         bool    antialiasingSamples   = true;
@@ -40,6 +41,7 @@ namespace OmniMIDI
         {
             nlohmann::json DefConfig =
             {
+                ConfGetVal(disableSynthLogs),
                 ConfGetVal(audioLimiter),
                 ConfGetVal(fastDecay),
                 ConfGetVal(antialiasingSamples),
@@ -66,6 +68,7 @@ namespace OmniMIDI
         {
             if(InitConfig(false, KASARIA_STR, sizeof(KASARIA_STR)))
             {
+                SynthSetVal(bool, disableSynthLogs);
                 SynthSetVal(bool, audioLimiter);
                 SynthSetVal(bool, fastDecay);
                 SynthSetVal(bool, antialiasingSamples);
@@ -139,6 +142,7 @@ public:
     bool StartSynthModule() override;
     bool StopSynthModule() override;
     bool SettingsManager(uint32_t setting, bool get, void *var, size_t size) override { return false; }
+    uint64_t GetActiveVoices() override;
     uint32_t GetSampleRate() override { return 48000; }
     bool IsSynthInitialized() override;
     uint32_t SynthID() override { return 0x7C4E19A3; }
