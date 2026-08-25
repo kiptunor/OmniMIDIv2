@@ -16,20 +16,22 @@ namespace OmniMIDI
     class KasariaSettings : public SettingsModule
     {
     public:
-        // Settings for Kasaria synth
-        bool    disableSynthLogs      = false;
-        bool    audioLimiter          = true;
-        bool    fastDecay             = true;
-        bool    antialiasingSamples   = true;
-        bool    preResample           = true;
-        bool    velocityNoteSkipping  = true;
-        uint8_t lowVelocityThreshold  = 0;
-        uint8_t highVelocityThreshold = 20;
-        int     framePeriodSize       = 488;
-        int     voiceLimit            = 2026;
-        int     amplification         = 100; // 100%
-        int     sampleRate            = 48000;
-        int     controlRate           = 125;
+        // Settings for Kasaria synth and the defaults
+        bool     disableSynthLogs      = false;
+        bool     audioLimiter          = true;
+        bool     fastDecay             = true;
+        bool     antialiasingSamples   = true;
+        bool     preResample           = true;
+        bool     velocityNoteSkipping  = true;
+        uint8_t  lowVelocityThreshold  = 0;
+        uint8_t  highVelocityThreshold = 20;
+        int      framePeriodSize       = 10;
+        int      voiceLimit            = 2026;
+        int      amplification         = 100; // 100%
+        int      sampleRate            = 48000;
+        int      controlRate           = 125;
+        int      audioBufferSize       = 32768;
+        uint64_t evBufSize             = 25536;
 
 
 
@@ -54,6 +56,7 @@ namespace OmniMIDI
                 ConfGetVal(amplification),
                 ConfGetVal(sampleRate),
                 ConfGetVal(controlRate),
+                ConfGetVal(evBufSize),
             };
 
             if(AppendToConfig(DefConfig))
@@ -81,6 +84,7 @@ namespace OmniMIDI
                 SynthSetVal(int, amplification);
                 SynthSetVal(int, sampleRate);
                 SynthSetVal(int, controlRate);
+                SynthSetVal(uint64_t, evBufSize);
             }
 
             // If settings for Kasaria don't exist in the JSON file, append them
@@ -104,6 +108,7 @@ class KasariaSynth : public SynthModule
     static void     (*ksr_set_max_voices)(Kasaria*, int);
     static int      (*ksr_load_soundfont_file)(Kasaria*, const char*, bool);
     static void     (*ksr_write_midi_ev)(Kasaria*, unsigned char, unsigned char, unsigned char);
+    static void     (*ksr_render_float)(Kasaria *, float *, long);
     static void     (*ksr_write_midi_ev_packed)(Kasaria*, unsigned long);
     static void     (*ksr_write_sysex)(Kasaria*, unsigned char*, long);
     static void     (*ksr_shutdown)(Kasaria*);
@@ -111,7 +116,7 @@ class KasariaSynth : public SynthModule
     Lib *KsrLib = nullptr;
 
     // Library symbols to load
-    LibImport KsrLibImp[12] =
+    LibImport KsrLibImp[13] =
     {
         ImpFunc(ksr_init),
         ImpFunc(ksr_init_audio),
@@ -119,6 +124,7 @@ class KasariaSynth : public SynthModule
         ImpFunc(ksr_stop_audio),
         ImpFunc(ksr_get_active_voices),
         ImpFunc(ksr_set_config),
+        ImpFunc(ksr_render_float),
         ImpFunc(ksr_set_max_voices),
         ImpFunc(ksr_load_soundfont_file),
         ImpFunc(ksr_write_midi_ev),
@@ -130,6 +136,9 @@ class KasariaSynth : public SynthModule
     size_t KsrLibImpLen = sizeof(KsrLibImp) / sizeof(KsrLibImp[0]);
     
     void UnloadSoundfonts();
+    void EventsThread();
+    bool ProcessEvBuf();
+        
 
     KasariaSettings *KsrConfig = nullptr;
 public:
@@ -137,6 +146,7 @@ public:
     Kasaria *ksr_synth_ctx = nullptr;
 
     SoundFontSystem _sfSystem;
+    int32_t sleepRate = -1;
 
     KasariaSynth(ErrorSystem::Logger *PErr) : SynthModule(PErr){}
     bool LoadSynthModule() override;

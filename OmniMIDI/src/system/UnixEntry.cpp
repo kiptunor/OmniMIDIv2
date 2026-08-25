@@ -190,12 +190,12 @@ void standalone() {
         } else
             Message("snd_seq_open %x >> GOOD", status);
 
-        status = snd_seq_set_client_name(seq_handle, NAME);
+        status = snd_seq_set_client_name(seq_handle, OM_NAME);
         if (status) {
             Error("snd_seq_set_client_name failed.", true);
             return;
         } else
-            Message("snd_seq_set_client_name %x >> %s", status, NAME);
+            Message("snd_seq_set_client_name %x >> %s", status, OM_NAME);
 
         in_port = snd_seq_create_simple_port(
             seq_handle, "virtual",

@@ -2,7 +2,7 @@
 
 
 
-#include "kasaria.h"
+
 #include "kasariaM.hpp"
 
 
@@ -18,9 +18,13 @@ void     (*OmniMIDI::KasariaSynth::ksr_set_config)(Kasaria*, KasariaConfig) = nu
 void     (*OmniMIDI::KasariaSynth::ksr_set_max_voices)(Kasaria*, int) = nullptr;
 int      (*OmniMIDI::KasariaSynth::ksr_load_soundfont_file)(Kasaria*, const char*, bool) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_write_midi_ev)(Kasaria*, unsigned char, unsigned char, unsigned char) = nullptr;
+void     (*OmniMIDI::KasariaSynth::ksr_render_float)(Kasaria *, float *, long) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_write_midi_ev_packed)(Kasaria*, unsigned long) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_write_sysex)(Kasaria*, unsigned char*, long) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_shutdown)(Kasaria*) = nullptr;
+
+
+
 
 bool OmniMIDI::KasariaSynth::LoadSynthModule()
 {
@@ -39,6 +43,16 @@ bool OmniMIDI::KasariaSynth::LoadSynthModule()
     if(!KsrLib->LoadLib())
         return false;
 
+    // Allocate the ring buffer (like FluidSynth does)
+    if(!AllocateShortEvBuf(KsrConfig->evBufSize))
+    {
+        Error("AllocateShortEvBuf failed.", true);
+        return false;
+    }
+
+    // Then create the MIDI event thread
+    _SinEvtThread = std::jthread(&KasariaSynth::EventsThread, this);
+
     return true;
 }
 
@@ -52,6 +66,38 @@ bool OmniMIDI::KasariaSynth::UnloadSynthModule()
     if(!KsrLib->UnloadLib())
         return false;
 
+    return true;
+}
+
+
+void OmniMIDI::KasariaSynth::EventsThread()
+{
+    sleepRate = (int32_t)(((double)KsrConfig->framePeriodSize / (double)KsrConfig->SampleRate) * 10000000.0);
+    
+    // Spin until Kasaria's audio device is ready
+    while(!IsSynthInitialized())
+        Utils.MicroSleep(sleepRate);
+
+    // Drain the ring buffer and dispatch to Kasaria
+    while(IsSynthInitialized())
+    {
+        if(!ProcessEvBuf())
+            Utils.MicroSleep(sleepRate);
+    }
+}
+
+bool OmniMIDI::KasariaSynth::ProcessEvBuf()
+{
+    auto evtDword = ShortEvents->Read();
+    if(!evtDword)
+        return false;
+
+    // Unpack the event (same format as the ring buffer stores it)
+    uint8_t status = evtDword & 0xFF;
+    uint8_t param1 = (evtDword >> 8) & 0x7F;
+    uint8_t param2 = (evtDword >> 16) & 0x7F;
+
+    ksr_write_midi_ev(ksr_synth_ctx, status, param1, param2);
     return true;
 }
 
@@ -105,7 +151,6 @@ bool OmniMIDI::KasariaSynth::StartSynthModule()
     if(!KsrConfig)
         return false;
 
-    
 
     // Initialize the Kasaria synth context
     ksr_synth_ctx = ksr_init(KsrConfig->disableSynthLogs);
@@ -141,15 +186,14 @@ bool OmniMIDI::KasariaSynth::StartSynthModule()
     // Then start the audio thread
     ksr_start_audio(ksr_synth_ctx);
 
-    //StartDebugOutput();
 
     return true;
 }
 
 void OmniMIDI::KasariaSynth::UPlayShortEvent(unsigned int ev)
 {
-    // This ain't good tbh
-    ksr_write_midi_ev_packed(ksr_synth_ctx, ev);
+    // Write events into the ring buffer
+    ShortEvents->Write(ev);
 }
 
 void OmniMIDI::KasariaSynth::PlayShortEvent(unsigned int ev)
@@ -173,7 +217,13 @@ bool OmniMIDI::KasariaSynth::StopSynthModule()
     {
         ksr_stop_audio(ksr_synth_ctx);
         ksr_shutdown(ksr_synth_ctx);
+        ksr_synth_ctx = nullptr;
     }
+
+    if(_SinEvtThread.joinable())
+        _SinEvtThread.join();
+
+    FreeShortEvBuf();
 
     return true;
 }
