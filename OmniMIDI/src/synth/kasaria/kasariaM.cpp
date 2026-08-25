@@ -13,6 +13,7 @@ Kasaria* (*OmniMIDI::KasariaSynth::ksr_init)(bool disable_logs) = nullptr;
 int      (*OmniMIDI::KasariaSynth::ksr_init_audio)(Kasaria*, int) = nullptr;
 int      (*OmniMIDI::KasariaSynth::ksr_start_audio)(Kasaria*) = nullptr;
 int      (*OmniMIDI::KasariaSynth::ksr_stop_audio)(Kasaria*) = nullptr;
+int      (*OmniMIDI::KasariaSynth::ksr_get_active_voices)(Kasaria*) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_set_config)(Kasaria*, KasariaConfig) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_set_max_voices)(Kasaria*, int) = nullptr;
 int      (*OmniMIDI::KasariaSynth::ksr_load_soundfont_file)(Kasaria*, const char*, bool) = nullptr;

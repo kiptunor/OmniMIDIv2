@@ -99,6 +99,7 @@ class KasariaSynth : public SynthModule
     static int      (*ksr_init_audio)(Kasaria*, int);
     static int      (*ksr_start_audio)(Kasaria*);
     static int      (*ksr_stop_audio)(Kasaria*);
+    static int      (*ksr_get_active_voices)(Kasaria*);
     static void     (*ksr_set_config)(Kasaria*, KasariaConfig);
     static void     (*ksr_set_max_voices)(Kasaria*, int);
     static int      (*ksr_load_soundfont_file)(Kasaria*, const char*, bool);
@@ -110,12 +111,13 @@ class KasariaSynth : public SynthModule
     Lib *KsrLib = nullptr;
 
     // Library symbols to load
-    LibImport KsrLibImp[11] =
+    LibImport KsrLibImp[12] =
     {
         ImpFunc(ksr_init),
         ImpFunc(ksr_init_audio),
         ImpFunc(ksr_start_audio),
         ImpFunc(ksr_stop_audio),
+        ImpFunc(ksr_get_active_voices),
         ImpFunc(ksr_set_config),
         ImpFunc(ksr_set_max_voices),
         ImpFunc(ksr_load_soundfont_file),
