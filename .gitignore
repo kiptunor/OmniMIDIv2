@@ -50,6 +50,7 @@ OmniMIDI/WIN7DBG/
 
 # Language server
 .clangd
+compile_commands.json
 
 # qtcreator generated files
 *.pro.user*
