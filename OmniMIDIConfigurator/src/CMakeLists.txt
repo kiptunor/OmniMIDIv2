@@ -28,6 +28,8 @@ qt_add_executable(OmniMIDIConfigurator
     custom-widgets/samplerateselector.h custom-widgets/samplerateselector.cpp
 )
 
+target_include_directories(OmniMIDIConfigurator PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
 target_link_libraries(OmniMIDIConfigurator
     PRIVATE
         Qt::Core

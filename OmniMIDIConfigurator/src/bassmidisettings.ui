@@ -978,7 +978,7 @@
   <customwidget>
    <class>SampleRateSelector</class>
    <extends>QComboBox</extends>
-   <header location="global">../../../../../src/custom-widgets/samplerateselector.h</header>
+   <header location="global">custom-widgets/samplerateselector.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
