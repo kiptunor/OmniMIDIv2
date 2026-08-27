@@ -9,6 +9,8 @@
 #include "xsynthsettings.h"
 #include "fluidconfig.h"
 #include "fluidsettings.h"
+#include "kasariaSettings.h"
+#include "kasariaConfig.h"
 #include "utils.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -116,6 +118,12 @@ void MainWindow::displayEngineSettings() {
             FluidConfig *config = new FluidConfig(&m_cfg);
             m_cfg.setSynthConfig(config);
             m_engineSettings = new FluidSettings(ui->engineSettingsScrollArea, config);
+            break;
+        }
+        case Synthesizers::Kasaria: {
+            KasariaConfig *config = new KasariaConfig(&m_cfg);
+            m_cfg.setSynthConfig(config);
+            m_engineSettings = new KasariaSettings(ui->engineSettingsScrollArea, config);
             break;
         }
         case Synthesizers::XSynth: {

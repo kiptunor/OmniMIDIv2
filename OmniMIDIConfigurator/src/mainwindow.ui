@@ -362,6 +362,11 @@
              </item>
              <item>
               <property name="text">
+               <string>Kasaria</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
                <string>Custom</string>
               </property>
              </item>
@@ -570,8 +575,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>738</width>
-             <height>446</height>
+             <width>752</width>
+             <height>452</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_7"/>
@@ -1067,7 +1072,7 @@
      <x>0</x>
      <y>0</y>
      <width>780</width>
-     <height>23</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuOmniMIDI">

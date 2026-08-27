@@ -19,6 +19,7 @@ qt_add_executable(OmniMIDIConfigurator
     xsynthconfig.h xsynthconfig.cpp
     fluidconfig.h fluidconfig.cpp
     fluidsettings.h fluidsettings.cpp fluidsettings.ui
+    kasariaConfig.h kasariaConfig.cpp kasariaSettings.h kasariaSettings.cpp kasariaSettings.ui
     custom-widgets/soundfontlist.h custom-widgets/soundfontlist.cpp
     sflistconfig.h sflistconfig.cpp
     sfsettings.h sfsettings.cpp sfsettings.ui

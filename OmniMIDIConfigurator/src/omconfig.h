@@ -14,6 +14,7 @@ public:
         BASSMIDI,
         FluidSynth,
         XSynth,
+        Kasaria,
         ShakraPipe
     };
 };
