@@ -56,4 +56,5 @@ compile_commands.json
 *.pro.user*
 CMakeLists.txt.user*
 CMakeCache.txt
+.cache
 vcpkg_installed/

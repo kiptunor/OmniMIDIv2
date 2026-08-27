@@ -6,539 +6,396 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>481</width>
-    <height>611</height>
+    <width>627</width>
+    <height>704</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>461</width>
-     <height>591</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="title">
-       <string>General</string>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <widget class="QCheckBox" name="cb_disableSynthLogs">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>20</y>
-         <width>151</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Disable synth logging</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="cb_antialiasedSamples">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>43</y>
-         <width>151</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Antialiased Samples</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="cb_fastDecay">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>73</y>
-         <width>91</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Fast decay</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="cb_preResample">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>100</y>
-         <width>111</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Pre-resample</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spb_ctrlRate">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>230</y>
-         <width>151</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="minimum">
-        <number>1</number>
-       </property>
-       <property name="maximum">
-        <number>999</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>230</y>
-         <width>71</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Control rate</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>160</y>
-         <width>81</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Audio volume</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spb_voiceLimit">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>270</y>
-         <width>151</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="minimum">
-        <number>10</number>
-       </property>
-       <property name="maximum">
-        <number>9024</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>270</y>
-         <width>71</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Voice Limit</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>310</y>
-         <width>81</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Sample Rate</string>
-       </property>
-      </widget>
-      <widget class="SampleRateSelector" name="srs_smplRate">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>310</y>
-         <width>150</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>150</width>
-         <height>0</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="cb_audioLimter">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>120</y>
-         <width>101</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Audio limiter</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_8">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>190</y>
-         <width>101</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Audio frame size</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spb_framePeriodSize">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>190</y>
-         <width>151</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="minimum">
-        <number>10</number>
-       </property>
-       <property name="maximum">
-        <number>900</number>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_1">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>23</y>
-         <width>21</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;By default Kasaria logs all events to stdout&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="help-about"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>50</y>
-         <width>21</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sample antialiasing caps out frequencies higher than what the sample rate.&lt;/p&gt;&lt;p&gt;It takes effect at soundfont loading.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="help-about"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>75</y>
-         <width>21</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fast decay makes envelope processing much faster.&lt;/p&gt;&lt;p&gt;It takes effect at soundfont loading.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="help-about"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>100</y>
-         <width>21</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pre-process soundfont samples.&lt;/p&gt;&lt;p&gt;It can reduce synth workload by a light margin&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="help-about"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>125</y>
-         <width>21</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The audio limiter is built into Kasaria and it's important for reducing audio loudness&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="help-about"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_6">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>190</y>
-         <width>31</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The time interval the audio thread sends sound data to the audio device.&lt;/p&gt;&lt;p&gt;This impacts the frequency of chopped notes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="help-about"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>230</y>
-         <width>31</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set the amount of sample rate computations.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="help-about"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_8">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>270</y>
-         <width>31</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A voice is the sound of a single note played by the synth.&lt;/p&gt;&lt;p&gt;With larger voice limits the audio is more consistent but it also takes more rendering time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="help-about"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_9">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>310</y>
-         <width>31</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The sample rate is a very important setting that has a major impact on the overall audio quality.&lt;/p&gt;&lt;p&gt;Recommended is to keep the sample rate not to low or too high, set a value that does not increase audio rendering workload and also not too low which could result in lower audio quality.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="help-about"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QSlider" name="sl_audioVol">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>160</y>
-         <width>151</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-      </widget>
-      <widget class="QGroupBox" name="groupBox_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>360</y>
-         <width>461</width>
-         <height>151</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string>Note velocity skipper</string>
-       </property>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>20</y>
-          <width>531</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <underline>true</underline>
-         </font>
-        </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>General</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="5" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignLeft">
+       <widget class="QCheckBox" name="cb_audioLimter">
         <property name="text">
-         <string>Skip notes within the low and high velocity range (Both note on and note offs)</string>
+         <string>Audio limiter</string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="cb_noteVelSkip">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>40</y>
-          <width>71</width>
-          <height>24</height>
-         </rect>
+      </item>
+      <item row="1" column="8">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sample antialiasing caps out frequencies higher than the sample rate.&lt;/p&gt;&lt;p&gt;It takes effect at soundfont loading.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Enabled</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="help-about"/>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
-       <widget class="QSpinBox" name="spb_lowVelRange">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>70</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
+      </item>
+      <item row="10" column="0" rowspan="2" colspan="5">
+       <widget class="QWidget" name="horizontalWidget_4" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Sample Rate</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="8" column="0" colspan="4">
+       <widget class="QWidget" name="horizontalWidget_2" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Control rate</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="9" column="0" colspan="4">
+       <widget class="QWidget" name="horizontalWidget_3" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Voice Limit</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="8" column="7">
+       <widget class="QSpinBox" name="spb_ctrlRate">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>1</number>
         </property>
         <property name="maximum">
-         <number>127</number>
+         <number>999</number>
         </property>
        </widget>
-       <widget class="QLabel" name="label_6">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>76</y>
-          <width>111</width>
-          <height>20</height>
-         </rect>
+      </item>
+      <item row="6" column="0" colspan="6">
+       <widget class="QWidget" name="horizontalWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string> Audio volume                </string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="5" column="8">
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The audio limiter is built into Kasaria and it's important for reducing audio loudness&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Low velocity range</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="help-about"/>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
-       <widget class="QLabel" name="label_7">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>110</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
+      </item>
+      <item row="6" column="7" colspan="2">
+       <widget class="QSlider" name="sl_audioVol">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="8">
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set the amount of sample rate computations.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>High velocity range</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="help-about"/>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
-       <widget class="QSpinBox" name="spb_highVelRange">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>110</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
+      </item>
+      <item row="7" column="0" colspan="5">
+       <widget class="QWidget" name="horizontalWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Audio frame size</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="3" alignment="Qt::AlignmentFlag::AlignLeft">
+       <widget class="QCheckBox" name="cb_preResample">
+        <property name="text">
+         <string>Pre-resample</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="4" alignment="Qt::AlignmentFlag::AlignLeft">
+       <widget class="QCheckBox" name="cb_antialiasedSamples">
+        <property name="text">
+         <string>Antialiased Samples</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="6" alignment="Qt::AlignmentFlag::AlignLeft">
+       <widget class="QCheckBox" name="cb_disableSynthLogs">
+        <property name="text">
+         <string>Disable synth logging</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="8">
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pre-process soundfont samples.&lt;/p&gt;&lt;p&gt;It can reduce synth workload by a light margin&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="help-about"/>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="cb_fastDecay">
+        <property name="text">
+         <string>Fast decay</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="8">
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fast decay makes envelope processing much faster.&lt;/p&gt;&lt;p&gt;It takes effect at soundfont loading.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="help-about"/>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="7">
+       <widget class="QSpinBox" name="spb_framePeriodSize">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>10</number>
         </property>
         <property name="maximum">
-         <number>127</number>
+         <number>900</number>
         </property>
        </widget>
+      </item>
+      <item row="7" column="8">
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The time interval the audio thread sends sound data to the audio device.&lt;/p&gt;&lt;p&gt;This impacts the frequency of chopped notes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="help-about"/>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="8">
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;By default Kasaria logs all events to stdout&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="help-about"/>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="8">
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A voice is the sound of a single note played by the synth.&lt;/p&gt;&lt;p&gt;With larger voice limits the audio is more consistent but it also takes more rendering time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="toolTipDuration">
+         <number>-1</number>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="help-about"/>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="7">
+       <widget class="QSpinBox" name="spb_voiceLimit">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>10</number>
+        </property>
+        <property name="maximum">
+         <number>9024</number>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="7">
+       <widget class="SampleRateSelector" name="srs_smplRate">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="8">
        <widget class="QPushButton" name="pushButton_10">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>70</y>
-          <width>31</width>
-          <height>31</height>
-         </rect>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The sample rate is a very important setting that has a major impact on the overall audio quality.&lt;/p&gt;&lt;p&gt;Recommended is to keep the sample rate not to low or too high, set a value that does not increase audio rendering workload and also not too low which could result in lower audio quality.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="help-about"/>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Note velocity skipper</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="2" column="3">
+       <widget class="QPushButton" name="pushButton_12">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set the minimum velocity range from where the synth starts skipping note events&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -553,15 +410,110 @@
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_11">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>110</y>
-          <width>31</width>
-          <height>31</height>
-         </rect>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="cb_noteVelSkip">
+        <property name="text">
+         <string>Enabled</string>
         </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QWidget" name="horizontalWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>High velocity range</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QWidget" name="horizontalWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Low velocity range</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QSpinBox" name="spb_lowVelRange">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
+        <property name="maximum">
+         <number>127</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QSpinBox" name="spb_highVelRange">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximum">
+         <number>127</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QPushButton" name="pushButton_13">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set the high velocity range that fully depends on the low velocity range.&lt;/p&gt;&lt;p&gt;This feature is useful for avoiding intense synth workloads for BlackMIDIs with very dense note arts which increases audio quality and performance&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -575,75 +527,102 @@
          <bool>true</bool>
         </property>
        </widget>
-      </widget>
-      <widget class="QGroupBox" name="groupBox_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>520</y>
-         <width>461</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string>MIDI Event Handling</string>
-       </property>
-       <widget class="QLabel" name="label_9">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>30</y>
-          <width>101</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Event Buffer Size</string>
-        </property>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string>MIDI Event Handling</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QWidget" name="horizontalWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Event Buffer Size</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spb_evBufSize">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>150</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>50</number>
+           </property>
+           <property name="maximum">
+            <number>999999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_14">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set the size of the buffer that receives the MIDI events.&lt;/p&gt;&lt;p&gt;MIDI Event buffering helps reducing synth workload even on very insense processing.&lt;/p&gt;&lt;p&gt;For better performance keep the event buffer lower&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset theme="help-about"/>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
-       <widget class="QSpinBox" name="spb_evBufSize">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>30</y>
-          <width>131</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>50</number>
-        </property>
-        <property name="maximum">
-         <number>999999</number>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_12">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>30</y>
-          <width>31</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set the size of the buffer that receives the MIDI events.&lt;/p&gt;&lt;p&gt;MIDI Event buffering helps reducing synth workload even on very insense processing.&lt;/p&gt;&lt;p&gt;For better performance keep the event buffer lower&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset theme="help-about"/>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </widget>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>13</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
  </widget>
  <customwidgets>
   <customwidget>
