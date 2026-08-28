@@ -3,7 +3,7 @@
  *
  * OmniMIDI
  *
- * Copyright (c) 2024 Keppy's Software
+ * Copyright (c) 2024 Keppy's Software, 2026 Kiptunor
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the MIT License.
