@@ -14,7 +14,7 @@
    <string>OmniMIDI Configurator</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="icons.qrc">
+   <iconset resource="../res/res.qrc">
     <normaloff>:/OMConfigurator.png</normaloff>:/OMConfigurator.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -1135,7 +1135,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="icons.qrc"/>
+  <include location="../res/res.qrc"/>
  </resources>
  <connections/>
 </ui>
