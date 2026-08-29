@@ -3,6 +3,9 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QStyleFactory>
+#include <QFile>
+#include <QFontDatabase>
+
 #include "utils.h"
 
 int main(int argc, char *argv[])
@@ -17,6 +20,23 @@ int main(int argc, char *argv[])
     //     QMessageBox::warning(nullptr, WARNING_TITLE, e.what());
     // }
 
+
+    QFontDatabase::addApplicationFont(":/font/theme/fonts/MomoTrustSans-Regular.ttf");
+
+
+    QFont font("MomoTrustSans");
+    font.setPointSize(14);
+    a.setFont(font);
+
+    QFile styleFile(":/style/theme/defaultTheme.qss");
+    
+   
+    if(styleFile.open(QFile::ReadOnly | QFile::Text))
+        a.setStyleSheet(QString::fromUtf8(styleFile.readAll()));
+    else
+        qWarning() << "Could not load stylesheet:" << styleFile.errorString();
+    
+    
     int r = 0;
     try {
         MainWindow w;

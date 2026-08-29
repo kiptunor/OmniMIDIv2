@@ -25,7 +25,7 @@ qt_add_executable(OmniMIDIConfigurator
     sfsettings.h sfsettings.cpp sfsettings.ui
     aboutwindow.h aboutwindow.cpp aboutwindow.ui
     kdmapi.h
-    icons.qrc
+    ../res/res.qrc
     custom-widgets/samplerateselector.h custom-widgets/samplerateselector.cpp
 )
 
