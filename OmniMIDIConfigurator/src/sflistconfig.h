@@ -14,7 +14,7 @@ class SoundFont
 public:
     std::string path;
 
-    bool enabled = true;
+    bool enabled = false;
     bool xgdrums = false;
     bool linattmod = false;
     bool lindecvol = false;
