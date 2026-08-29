@@ -120,6 +120,7 @@ bool OmniMIDI::KasariaSynth::ProcessEvBuf()
 
 void OmniMIDI::KasariaSynth::LoadSoundFonts()
 {
+    std::cout << "TRY LOAD SF\n";
     if(_sfSystem.ClearList())
     {
         _sfVec = _sfSystem.LoadList();
@@ -192,10 +193,15 @@ bool OmniMIDI::KasariaSynth::StartSynthModule()
     // Override default settings with the current settings from ^^^
     ksr_set_config(ksr_synth_ctx, ksr_settings);
 
-    // Load the enabled soundfonts
-    LoadSoundFonts();
+    // Load SoundFonts
+    // LoadSoundFonts(); // The code below makes the soundfont system to load the same soundfonts twice
 
-    _sfSystem.RegisterCallback(this);
+    // During initialization it's already enough to do these
+    _sfSystem.ClearList();
+    _sfVec = _sfSystem.LoadList();
+
+    _sfSystem.RegisterCallback(this); // This starts the soundfont loading thread which monitors the json soundfont list for any changes
+    // When a file change is detected LoadSoundFonts(); is called
 
     // Initialize the audio thread for raw MIDI events (Internal audio handler)
     ksr_init_audio(ksr_synth_ctx, RAW_MIDI_EVENTS);
