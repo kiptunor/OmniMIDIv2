@@ -80,6 +80,7 @@ typedef struct
     bool pre_resample;
     bool velocity_skipping;
     bool skip_initial_silence;
+    bool allow_overlapping_notes;
     bool audio_compressor;
 }KasariaConfig;
 
@@ -88,7 +89,7 @@ typedef struct
     int active_presets;          // Set how many presets to store
     int bank;                    // Set the current MIDI bank (Currently unused)
     int preset;                  // Set the current preset
-    bool preload_instruments;    // Preload instruments into tone banks (Required for synthesis)
+    //bool preload_instruments;    // Preload instruments into tone banks (Required for synthesis)
     bool load_percussion_bank; // When enabled the soundfont loader also loads the percusion bank used in MIDI Channel 10
 }KsrSoundfontOpts;
 
@@ -196,42 +197,44 @@ KSR_API void ksr_restore_defaults(Kasaria *ksr); // Restore default settings
 */
 
 
-KSR_API void ksr_set_amplification(Kasaria *ksr, int amplification); // Amplification is represented in percent
-KSR_API void ksr_set_max_voices(Kasaria *ksr, int voices);           // The number of voices is clamped between 1 and MAX_VOICES
-KSR_API void ksr_set_immediate_panning(Kasaria *ksr, bool value);    // The value argument for the following functions should be treated as a boolean
-KSR_API void ksr_set_mono(Kasaria *ksr, bool value);                 // This makes weird noise // Renders mono audio buffers if enabled, interleaved stereo otherwise
+KSR_API void ksr_config_set_overlapping_notes(Kasaria *ksr, bool value);
+KSR_API void ksr_config_set_amplification(Kasaria *ksr, int amplification); // Amplification is represented in percent
+KSR_API void ksr_config_set_max_voices(Kasaria *ksr, int voices);           // The number of voices is clamped between 1 and MAX_VOICES
+KSR_API void ksr_config_set_immediate_panning(Kasaria *ksr, bool value);    // The value argument for the following functions should be treated as a boolean
+KSR_API void ksr_config_set_mono(Kasaria *ksr, bool value);                 // This makes weird noise // Renders mono audio buffers if enabled, interleaved stereo otherwise
 
 // These next few functions reload the current sample bank before returning
-KSR_API void ksr_set_fast_decay(Kasaria *ksr, bool value);
-KSR_API void ksr_set_antialiasing(Kasaria *ksr, bool value);
-KSR_API void ksr_set_pre_resample(Kasaria *ksr, bool value);
-KSR_API void ksr_set_sample_rate(Kasaria *ksr, int rate);                   // The sample rate is clamped between MIN_OUTPUT_RATE and MAX_OUTPUT_RATE
-KSR_API void ksr_set_control_rate(Kasaria *ksr, int rate);                  // The control rate is clamped between current sample rate / MAX_CONTROL_RATIO and current sample rate
-KSR_API void ksr_set_default_program(Kasaria *ksr, int program);            // Sets the default MIDI program, takes effect on next MIDI reset
-KSR_API void ksr_set_drum_channel(Kasaria *ksr, int channel, bool enable);
-KSR_API void ksr_set_quiet_channel(Kasaria *ksr, int channel, bool enable);
-KSR_API void ksr_set_note_velocity_skipping(Kasaria *ksr, uint8_t low_vel, uint8_t high_vel, bool enabled);
-KSR_API void ksr_set_audio_compressor(Kasaria *ksr, bool enabled);
-KSR_API void ksr_set_audio_frame_size(Kasaria *ksr, int size);
+KSR_API void ksr_config_set_fast_decay(Kasaria *ksr, bool value);
+KSR_API void ksr_config_set_antialiasing(Kasaria *ksr, bool value);
+KSR_API void ksr_config_set_pre_resample(Kasaria *ksr, bool value);
+KSR_API void ksr_config_set_sample_rate(Kasaria *ksr, int rate);                   // The sample rate is clamped between MIN_OUTPUT_RATE and MAX_OUTPUT_RATE
+KSR_API void ksr_config_set_control_rate(Kasaria *ksr, int rate);                  // The control rate is clamped between current sample rate / MAX_CONTROL_RATIO and current sample rate
+KSR_API void ksr_config_set_default_program(Kasaria *ksr, int program);            // Sets the default MIDI program, takes effect on next MIDI reset
+KSR_API void ksr_config_set_drum_channel(Kasaria *ksr, int channel, bool enable);
+KSR_API void ksr_config_set_quiet_channel(Kasaria *ksr, int channel, bool enable);
+KSR_API void ksr_config_set_note_skipping(Kasaria *ksr, uint8_t low_vel, uint8_t high_vel, bool enabled);
+KSR_API void ksr_config_set_audio_compressor(Kasaria *ksr, bool enabled);
+KSR_API void ksr_config_set_audio_frame_size(Kasaria *ksr, int size);
 
 
 /*
 *   Reading synth parameters and settings is done via the following functions
 */
-KSR_API int ksr_get_amplification(Kasaria *ksr);
-KSR_API int ksr_get_active_voices(Kasaria *ksr);
-KSR_API int ksr_get_max_voices(Kasaria *ksr);
-KSR_API int ksr_get_immediate_panning(Kasaria *ksr);
-KSR_API int ksr_get_mono(Kasaria *ksr);
-KSR_API int ksr_get_fast_decay(Kasaria *ksr);
-KSR_API int ksr_get_antialiasing(Kasaria *ksr);
-KSR_API int ksr_get_pre_resample(Kasaria *ksr);
+KSR_API int ksr_config_get_amplification(Kasaria *ksr);
+KSR_API int ksr_config_get_max_voices(Kasaria *ksr);
+KSR_API int ksr_config_get_immediate_panning(Kasaria *ksr);
+KSR_API int ksr_config_get_mono(Kasaria *ksr);
+KSR_API int ksr_config_get_fast_decay(Kasaria *ksr);
+KSR_API int ksr_config_get_antialiasing(Kasaria *ksr);
+KSR_API int ksr_config_get_pre_resample(Kasaria *ksr);
 // KSR_API int ksr_get_dynamic_instrument_load(Kasaria *ksr); // Unused and idk what to do with this
-KSR_API int ksr_get_sample_rate(Kasaria *ksr);
-KSR_API int ksr_get_control_rate(Kasaria *ksr);
-KSR_API int ksr_get_default_program(Kasaria *ksr);
-KSR_API int ksr_get_drum_channel_enabled(Kasaria *ksr, int channel);
-KSR_API int ksr_get_quiet_channel_enabled(Kasaria *ksr, int channel);
+KSR_API int ksr_config_get_sample_rate(Kasaria *ksr);
+KSR_API int ksr_config_get_control_rate(Kasaria *ksr);
+KSR_API int ksr_config_get_default_program(Kasaria *ksr);
+//KSR_API int ksr_get_drum_channel_enabled(Kasaria *ksr, int channel);
+//KSR_API int ksr_get_quiet_channel_enabled(Kasaria *ksr, int channel);
+
+KSR_API int ksr_get_active_voices(Kasaria *ksr);
 KSR_API int ksr_get_lost_notes(Kasaria *ksr);
 KSR_API int ksr_get_cut_notes(Kasaria *ksr);
 
@@ -346,66 +349,67 @@ KSR_API void ksr_unload_midi(Kasaria *ksr);
 KSR_API int  ksr_reload_midi(Kasaria *ksr);
 
 /*
-@brief        Play the loaded MIDI file and stream the generated sound to an audio device
+@brief        Get the generated audio stream from the builtin player
 @param ksr    Kasaria instance
 @param type   Sets the audio output format (float, double, short, etc. See Audio format identifier macros)
-@param buffer The audio output buffer that will be feed into the audio device
+@param buffer The audio output buffer that can be fed to an audio device (Requires audio callback) or 
+              an audio codec
 @param count  The number of samples to process
 
 @remark     The internal MIDI player is designed to process multiple midi notes in a single audio frame
             which makes the synth really good for generating the real frequencies of chopped notes.
             An important capability that most blackers cant go without it
 */
-KSR_API int  ksr_play_midi_raw(Kasaria *ksr, long type, unsigned char *buffer, long count);
+KSR_API int  ksr_player_get_stream(Kasaria *ksr, long audio_fmt, unsigned char *buffer, long count);
 
 /*
-@brief                  Play the loaded MIDI file and stream the generated sound to an audio device
+@brief                  Start the internal player handler
 @param ksr              Kasaria instance
 @param wait_midi_ending When set to true the function finishes execution only when midi end is reached
 
 @remark                 !! Important !! This is a simplified way to use the internal midi player and it 
                         requires the internal audio handler to be initialized and started
 */
-KSR_API int  ksr_play_midi(Kasaria *ksr, bool wait_midi_ending);
+KSR_API int  ksr_player_begin(Kasaria *ksr, bool wait_midi_ending);
 
 /*
 @brief      Seek forward or backward in the MIDI file
 @param ksr  Kasaria instance
 @param time How much time to seek forward or backwards
 */
-KSR_API int  ksr_seek_midi(Kasaria *ksr, long time);
+KSR_API int  ksr_player_seek(Kasaria *ksr, long time);
 
 /*
 @brief      Seek forward or backward in the MIDI file (Relative seeking)
 @param ksr  Kasaria instance
 @param time How much time to seek forward or backwards
 */
-KSR_API int  ksr_fast_forward_midi(Kasaria *ksr, long time);
+KSR_API int  ksr_player_fast_forward(Kasaria *ksr, long time);
 
 /*
 @brief     Check if the internal MIDI player is active
 @param ksr Kasaria instance
 */
-KSR_API bool ksr_is_midi_player_active(Kasaria *ksr);
+KSR_API bool ksr_player_is_active(Kasaria *ksr);
 
 /*
 @brief     Toggle pause / resume of the internal MIDI player
 @param ksr Kasaria instance
 */
-KSR_API bool ksr_pause_midi(Kasaria *ksr);
+KSR_API bool ksr_player_pause(Kasaria *ksr);
 
 /*
 @brief     Restart the internal MIDI player from the beginning
 @param ksr Kasaria instance
 */
-KSR_API int  ksr_rewind_midi(Kasaria *ksr, long time);
+KSR_API int  ksr_player_rewind(Kasaria *ksr, long time);
 // KSR_API int  ksr_restart_midi(Kasaria *ksr); // Unused
 
 /*
 @brief     Check if the internal MIDI player has ended
 @param ksr Kasaria instance
 */
-KSR_API bool ksr_is_midi_ended(Kasaria *ksr);
+KSR_API bool ksr_player_is_ended(Kasaria *ksr);
 
 // KSR_API int  ksr_stop_midi(Kasaria *ksr); // Unused
 
@@ -417,7 +421,7 @@ KSR_API bool ksr_is_midi_ended(Kasaria *ksr);
            and when used in midi visualizer as a pivot point to iterate and display notes on the screen
            it can make the visualizer a bit less smooth
 */
-KSR_API double ksr_get_midi_player_pos(Kasaria *ksr);
+KSR_API double ksr_player_get_pos(Kasaria *ksr);
 
 
 /*

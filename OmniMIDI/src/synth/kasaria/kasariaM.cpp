@@ -120,7 +120,6 @@ bool OmniMIDI::KasariaSynth::ProcessEvBuf()
 
 void OmniMIDI::KasariaSynth::LoadSoundFonts()
 {
-    std::cout << "TRY LOAD SF\n";
     if(_sfSystem.ClearList())
     {
         _sfVec = _sfSystem.LoadList();
