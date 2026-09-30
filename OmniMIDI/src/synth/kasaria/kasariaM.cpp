@@ -33,7 +33,7 @@ int      (*OmniMIDI::KasariaSynth::ksr_stop_audio)(Kasaria*) = nullptr;
 int      (*OmniMIDI::KasariaSynth::ksr_get_active_voices)(Kasaria*) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_set_config)(Kasaria*, KasariaConfig) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_set_max_voices)(Kasaria*, int) = nullptr;
-int      (*OmniMIDI::KasariaSynth::ksr_load_soundfont_file)(Kasaria*, const char*, bool) = nullptr;
+int      (*OmniMIDI::KasariaSynth::ksr_load_soundfont_file_new)(Kasaria*, const char*, KsrSoundfontOpts) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_write_midi_ev)(Kasaria*, unsigned char, unsigned char, unsigned char) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_render_float)(Kasaria *, float *, long) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_write_midi_ev_packed)(Kasaria*, unsigned long) = nullptr;
@@ -142,8 +142,20 @@ void OmniMIDI::KasariaSynth::LoadSoundFonts()
             if(!item.enabled)
                 continue;
 
+            // This stuff right here is temporary
+            // Some better work needs to be done behind the scenes...
+            KsrSoundfontOpts default_sf_opts;
+            default_sf_opts = (KsrSoundfontOpts)
+            {
+                .active_presets = 10,         // The soundfont list does not support this sf option
+                .bank = 0,                    // too lazy to set from list
+                .preset = 0,                  // too lazy to set from list
+                .load_percussion_bank = true, // Also unsupported by the soundfont list
+            };
+
             // Load the actual soundfont
-            ksr_load_soundfont_file(ksr_synth_ctx, sfPath, true); // And preload its instruments
+            //ksr_load_soundfont_file(ksr_synth_ctx, sfPath, true);
+            ksr_load_soundfont_file_new(ksr_synth_ctx, sfPath, default_sf_opts);
         }
     }
 }
