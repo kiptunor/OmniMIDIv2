@@ -946,8 +946,9 @@ QScrollBar.big::sub-line:horizontal {
 /*  QSlider  */
 
 QSlider:horizontal {
-  min-height: 24px;
-  max-height: 24px;
+  height: 14px;
+  /*min-height: 24px;
+  max-height: 24px;*/
 }
 
 QSlider:vertical {
@@ -976,7 +977,8 @@ QSlider::handle {
   image: url(:icon/theme/primary/slider.svg);
   width: 18px;
   height: 18px;
-  margin: -9px -18px;
+  /*margin: -9px -18px;*/
+  margin: -7px 0;
 }
 
 QSlider::add-page {

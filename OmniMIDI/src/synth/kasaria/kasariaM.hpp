@@ -124,7 +124,7 @@ class KasariaSynth : public SynthModule
     static void     (*ksr_set_config)(Kasaria*, KasariaConfig);
     static void     (*ksr_set_max_voices)(Kasaria*, int);
     //static int      (*ksr_load_soundfont_file)(Kasaria*, const char*, bool); // Super broken don't use it
-    static int      (*ksr_load_soundfont_file_new)(Kasaria*, const char*, KsrSoundfontOpts);
+    static int      (*ksr_load_soundfont_file)(Kasaria*, const char*, KsrSoundfontOpts);
     static void     (*ksr_write_midi_ev)(Kasaria*, unsigned char, unsigned char, unsigned char);
     static void     (*ksr_render_float)(Kasaria *, float *, long);
     static void     (*ksr_write_midi_ev_packed)(Kasaria*, unsigned long);
@@ -145,7 +145,7 @@ class KasariaSynth : public SynthModule
         ImpFunc(ksr_render_float),
         ImpFunc(ksr_set_max_voices),
         // ImpFunc(ksr_load_soundfont_file), // Time to ditch it...
-        ImpFunc(ksr_load_soundfont_file_new),
+        ImpFunc(ksr_load_soundfont_file),
         ImpFunc(ksr_write_midi_ev),
         ImpFunc(ksr_write_midi_ev_packed),
         ImpFunc(ksr_write_sysex),

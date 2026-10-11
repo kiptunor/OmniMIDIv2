@@ -33,7 +33,7 @@ int      (*OmniMIDI::KasariaSynth::ksr_stop_audio)(Kasaria*) = nullptr;
 int      (*OmniMIDI::KasariaSynth::ksr_get_active_voices)(Kasaria*) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_set_config)(Kasaria*, KasariaConfig) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_set_max_voices)(Kasaria*, int) = nullptr;
-int      (*OmniMIDI::KasariaSynth::ksr_load_soundfont_file_new)(Kasaria*, const char*, KsrSoundfontOpts) = nullptr;
+int      (*OmniMIDI::KasariaSynth::ksr_load_soundfont_file)(Kasaria*, const char*, KsrSoundfontOpts) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_write_midi_ev)(Kasaria*, unsigned char, unsigned char, unsigned char) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_render_float)(Kasaria *, float *, long) = nullptr;
 void     (*OmniMIDI::KasariaSynth::ksr_write_midi_ev_packed)(Kasaria*, unsigned long) = nullptr;
@@ -155,7 +155,7 @@ void OmniMIDI::KasariaSynth::LoadSoundFonts()
 
             // Load the actual soundfont
             //ksr_load_soundfont_file(ksr_synth_ctx, sfPath, true);
-            ksr_load_soundfont_file_new(ksr_synth_ctx, sfPath, default_sf_opts);
+            ksr_load_soundfont_file(ksr_synth_ctx, sfPath, default_sf_opts);
         }
     }
 }
